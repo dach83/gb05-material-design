@@ -1,21 +1,29 @@
 package com.example.gb05_material_design.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.gb05_material_design.R
+import androidx.fragment.app.Fragment
+import com.example.gb05_material_design.databinding.FragmentPictureOfTheDayBinding
 
 
 class PictureOfTheDayFragment : Fragment() {
 
+    private var _binding: FragmentPictureOfTheDayBinding? = null
+    private val binding: FragmentPictureOfTheDayBinding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_picture_of_the_day, container, false)
+    ): View {
+        _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
