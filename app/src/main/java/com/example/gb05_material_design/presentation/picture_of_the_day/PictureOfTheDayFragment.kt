@@ -35,8 +35,19 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.requestPictureOfTheDay()
+        viewModel.requestPictureOfTheDay(0)
+        setupDaysAgoChipGroup()
         observeUiState()
+    }
+
+    private fun setupDaysAgoChipGroup() {
+        binding.daysAgoChipGroup.setOnCheckedChangeListener { _, chipId ->
+            when (chipId) {
+                R.id.two_days_ago_chip -> viewModel.requestPictureOfTheDay(2)
+                R.id.yesterday_chip -> viewModel.requestPictureOfTheDay(1)
+                R.id.today_chip -> viewModel.requestPictureOfTheDay(0)
+            }
+        }
     }
 
     private fun observeUiState() {

@@ -2,4 +2,7 @@
     <string name="app_name">Material design</string>
     <string name="picture_of_the_day">Picture of the day</string>
     <string name="explanation">Explanation</string>
+    <string name="two_days_ago">Two days ago</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="today">Today</string>
 </resources>

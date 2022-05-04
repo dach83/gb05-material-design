@@ -18,10 +18,10 @@ class PictureOfTheDayViewModel @Inject constructor(private val nasaRepository: I
     private val _uiState = MutableStateFlow(PictureOfTheDayViewState())
     val uiState = _uiState.asStateFlow()
 
-    fun requestPictureOfTheDay() = viewModelScope.launch {
+    fun requestPictureOfTheDay(daysAgo: Int) = viewModelScope.launch {
         _uiState.update { it.copy(loading = true, pictureOfTheDay = null, error = null) }
         try {
-            val pictureOfTheDay = nasaRepository.requestPictureOfTheDay()
+            val pictureOfTheDay = nasaRepository.requestPictureOfTheDay(daysAgo)
             _uiState.update { it.copy(loading = false, pictureOfTheDay = pictureOfTheDay) }
         } catch (error: Exception) {
             _uiState.update { it.copy(loading = false, error = error) }
