@@ -5,6 +5,9 @@ import com.example.gb05_material_design.domain.model.PictureOfTheDay
 import javax.inject.Inject
 
 class PictureOfTheDayMapper @Inject constructor() {
-    fun mapToDomain(apiPictureOfTheDay: ApiPictureOfTheDay): PictureOfTheDay =
-        PictureOfTheDay(apiPictureOfTheDay.url)
+    fun mapToDomain(apiPictureOfTheDay: ApiPictureOfTheDay) = PictureOfTheDay(
+        apiPictureOfTheDay.title,
+        apiPictureOfTheDay.explanation,
+        apiPictureOfTheDay.url
+    )
 }
