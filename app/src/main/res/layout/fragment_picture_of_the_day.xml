@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.PictureOfTheDayFragment">
+    tools:context=".presentation.picture_of_the_day.PictureOfTheDayFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/picture_of_the_day_image_view"
@@ -15,6 +15,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/picture_of_the_day"
         tools:srcCompat="@drawable/bg_picture_of_the_day" />
+
+    <ProgressBar
+        android:id="@+id/picture_loading_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/picture_of_the_day_image_view"
+        app:layout_constraintStart_toStartOf="@id/picture_of_the_day_image_view"
+        app:layout_constraintEnd_toEndOf="@id/picture_of_the_day_image_view"
+        app:layout_constraintBottom_toBottomOf="@id/picture_of_the_day_image_view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
