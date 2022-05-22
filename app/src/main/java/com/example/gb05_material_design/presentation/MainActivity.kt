@@ -11,9 +11,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupTheme()
+        setContentView(R.layout.activity_main)
+    }
+
+    private fun setupTheme() {
         val themeId = ThemePreferencesHelper.readTheme(this)
         setTheme(themeId)
-        setContentView(R.layout.activity_main)
     }
 
 }
