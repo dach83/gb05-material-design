@@ -8,6 +8,7 @@ import com.example.gb05_material_design.R
 import com.example.gb05_material_design.databinding.ActivityMainBinding
 import com.example.gb05_material_design.domain.ThemePreferencesHelper
 import com.example.gb05_material_design.presentation.picture_of_the_day.PictureOfTheDayFragment
+import com.example.gb05_material_design.presentation.picture_of_the_day_pager.PictureOfTheDayPagerFragment
 import com.example.gb05_material_design.presentation.switch_theme.SwitchThemeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNav() {
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.picture_of_the_day_menu -> PictureOfTheDayFragment()
+                R.id.picture_of_the_day_menu -> PictureOfTheDayPagerFragment()
                 R.id.switch_theme_menu -> SwitchThemeFragment()
                 else -> null
             }?.also { fragment ->

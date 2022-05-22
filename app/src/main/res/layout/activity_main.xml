@@ -8,7 +8,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fragment_container"
-        android:name="com.example.gb05_material_design.presentation.picture_of_the_day.PictureOfTheDayFragment"
+        android:name="com.example.gb05_material_design.presentation.picture_of_the_day_pager.PictureOfTheDayPagerFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
