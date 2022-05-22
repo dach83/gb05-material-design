@@ -2,7 +2,7 @@
 <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_fragment_container"
-    android:name="com.example.gb05_material_design.presentation.picture_of_the_day.PictureOfTheDayFragment"
+    android:name="com.example.gb05_material_design.presentation.switch_theme.SwitchThemeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity" />
