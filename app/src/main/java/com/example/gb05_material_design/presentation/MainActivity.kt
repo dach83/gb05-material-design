@@ -2,14 +2,12 @@ package com.example.gb05_material_design.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.example.gb05_material_design.R
 import com.example.gb05_material_design.databinding.ActivityMainBinding
 import com.example.gb05_material_design.domain.ThemePreferencesHelper
-import com.example.gb05_material_design.presentation.picture_of_the_day.PictureOfTheDayFragment
 import com.example.gb05_material_design.presentation.picture_of_the_day_pager.PictureOfTheDayPagerFragment
 import com.example.gb05_material_design.presentation.switch_theme.SwitchThemeFragment
+import com.example.gb05_material_design.presentation.todo_list.TodoListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.picture_of_the_day_menu -> PictureOfTheDayPagerFragment()
                 R.id.switch_theme_menu -> SwitchThemeFragment()
+                R.id.todo_list_menu -> TodoListFragment()
                 else -> null
             }?.also { fragment ->
                 supportFragmentManager.beginTransaction()
