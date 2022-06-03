@@ -1,25 +1,31 @@
 package com.example.gb05_material_design.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.gb05_material_design.R
 import com.example.gb05_material_design.databinding.ActivityMainBinding
 import com.example.gb05_material_design.domain.ThemePreferencesHelper
+import com.example.gb05_material_design.presentation.picture_of_the_day.PictureOfTheDayFragment
 import com.example.gb05_material_design.presentation.picture_of_the_day_pager.PictureOfTheDayPagerFragment
 import com.example.gb05_material_design.presentation.switch_theme.SwitchThemeFragment
 import com.example.gb05_material_design.presentation.todo_list.TodoListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PictureOfTheDayFragment.Controller {
 
     private var _binding: ActivityMainBinding? = null
     private val binding: ActivityMainBinding get() = _binding!!
 
+    private var showLogo = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
+            .setKeepOnScreenCondition { showLogo }
         setupTheme()
-
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -50,6 +56,11 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    override fun onLoadedPictureOfTheDay() {
+        showLogo = false
+        Log.d("@@@", "onLoadedPictureOfTheDay: ")
     }
 
 }
