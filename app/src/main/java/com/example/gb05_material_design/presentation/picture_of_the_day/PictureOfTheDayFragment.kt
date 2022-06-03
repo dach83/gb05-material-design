@@ -1,11 +1,16 @@
 package com.example.gb05_material_design.presentation.picture_of_the_day
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.AbsoluteSizeSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.text.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,6 +20,7 @@ import com.example.gb05_material_design.databinding.FragmentPictureOfTheDayBindi
 import com.example.gb05_material_design.domain.model.PictureOfTheDayPreset
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlin.random.Random
 
 
 @AndroidEntryPoint
@@ -58,7 +64,7 @@ class PictureOfTheDayFragment() : Fragment() {
                 binding.pictureOfTheDayImageView.setOnClickListener(null)
                 uiState.pictureOfTheDay?.let { pictureOfTheDay ->
                     binding.toolbar.title = pictureOfTheDay.title
-                    binding.explanationTextView.text = pictureOfTheDay.explanation
+                    binding.explanationTextView.text = decorateText(pictureOfTheDay.explanation)
                     binding.pictureOfTheDayImageView.load(pictureOfTheDay.url)
                 }
                 uiState.error?.let { error ->
@@ -67,6 +73,21 @@ class PictureOfTheDayFragment() : Fragment() {
             }
         }
     }
+
+    private fun decorateText(text: String): Spanned = SpannableStringBuilder().apply {
+        text.split(" ").forEach { word ->
+            when (Random.nextInt(6)) {
+                0 -> italic { append(word) }
+                1 -> bold { append(word) }
+                2 -> color(Random.nextInt()) { append(word) }
+                3 -> backgroundColor(Random.nextInt()) { append(word) }
+                4 -> underline { append(word) }
+                5 -> scale(Random.nextDouble(3.0).toFloat()) {append(word)}
+                else -> append(word)
+            }
+            append(" ")
+        }
+    }.toSpanned()
 
     companion object {
         private const val KEY_PRESET = "preset"
